@@ -17,8 +17,6 @@ require_once 'libraries/database.php';
 require_once 'libraries/Models/Article.php';
 
 
-
-
 class Article
 {
 
