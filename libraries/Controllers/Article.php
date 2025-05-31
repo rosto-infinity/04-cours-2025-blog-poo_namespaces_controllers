@@ -2,6 +2,7 @@
 
 namespace Libraries\Controllers;
 
+session_start();
 use Libraries\Http;
 use Libraries\Utils;
 use Libraries\Renderer;
@@ -11,15 +12,14 @@ use JasonGrimes\Paginator;
 require_once 'libraries/Renderer.php'; 
 require_once 'libraries/Http.php'; 
 require_once 'libraries/Utils.php'; 
-session_start();
 require_once 'vendor/autoload.php';
 require_once 'libraries/database.php';
 require_once 'libraries/Models/Article.php';
+require_once 'libraries/Models/Comment.php';
 
 
 class Article
 {
-
   public function index()
   {
 
@@ -49,10 +49,38 @@ class Article
     Renderer::render('articles/index', compact('pageTitle', 'articlesByPaginator', 'paginator'));
   }
   public function show()
-  {
-    //Montrer un article
+{
+    $modelArticle = new \Libraries\Models\Article();
+    $modelComment = new \Libraries\Models\Comment();
 
-  }
+    $error = [];
+
+    // Récupération et validation de l'ID de l'article depuis les paramètres GET
+    $article_id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+    if ($article_id === null || $article_id === false) {
+        $error['article_id'] = "Le paramètre 'id' est invalide.";
+        Renderer::render('errors/404', compact('error'));
+        return;
+    }
+
+    // Récupération de l'article
+    $article = $modelArticle->findById($article_id);
+    if (!$article) {
+        $error['article'] = "L'article demandé n'existe pas.";
+        Renderer::render('errors/404', compact('error'));
+        return;
+    }
+
+    // Récupération des commentaires associés à l'article
+    $commentaires = $modelComment->findAll($article_id);
+
+    // Définition du titre de la page
+    $pageTitle = $article['title'] ?? 'Article';
+
+    // Rendu de la vue avec les données de l'article et des commentaires
+    Renderer::render('articles/show', compact('article', 'commentaires', 'article_id', 'pageTitle'));
+}
+
   public function delete()
   {
     //Supprimer un article

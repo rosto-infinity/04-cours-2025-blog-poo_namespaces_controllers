@@ -60,6 +60,13 @@ Renderer::render('articles/login', [
   }
 
   public function logout() {
+  
+session_unset(); // -Détruire toutes les variables de session
+session_destroy(); // Détruire la session
+
+Http::redirect('index.php'); // Rediriger vers la page de connexion
+
+
    }
 
    public function register() {
