@@ -3,8 +3,7 @@ namespace Libraries\Controllers;
 
 use Libraries\Utils;
 use JasonGrimes\Paginator;
-require_once 'vendor/autoload.php';
-require_once 'libraries/database.php';
+
 
 
 class Article extends Controller

@@ -5,9 +5,6 @@ namespace Libraries\Controllers;
 use Libraries\Http;
 use Libraries\Renderer;
 
-require_once 'libraries/Renderer.php';
-require_once 'libraries/Http.php';
-
 abstract class Controller
 {
     public function __construct()

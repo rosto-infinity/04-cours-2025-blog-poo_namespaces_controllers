@@ -5,12 +5,7 @@ session_start();
 use Libraries\Http;
 use Libraries\Renderer;
 use InvalidArgumentException;
-require_once 'libraries/database.php';
-require_once 'libraries/Models/User.php';
-require_once 'libraries/Renderer.php'; 
-require_once 'libraries/Http.php'; 
-require_once 'libraries/Utils.php'; 
-require_once 'libraries/Models/User.php';
+
 
 class User {
 

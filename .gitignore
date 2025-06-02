@@ -1,5 +1,5 @@
 
-/vendor
+vendor
 layouts/paginate.css
 layouts/style.css
 node_modules

@@ -1,9 +1,6 @@
 <?php                                                     
 namespace Libraries\Controllers;
 
-require_once 'libraries/Controllers/Controller.php';
-require_once 'libraries/database.php';
-
 
 class Comment extends Controller
 {
