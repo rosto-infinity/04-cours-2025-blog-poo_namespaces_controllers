@@ -1,5 +1,16 @@
 {
-    "require": {
-        "jasongrimes/paginator": "^1.0"
-    }
+    "name": "devinsto/04-cours-2024-blog-poo_namespaces_controllers",
+    "autoload": {
+        "psr-4": {
+            "Devinsto\\04Cours2024BlogPooNamespacesControllers\\": "src/",
+            "Libraries\\": "libraries/"
+        }
+    },
+    "authors": [
+        {
+            "name": "ROSTAND LELE",
+            "email": "rostoinfocus@gmail.com"
+        }
+    ],
+    "require": {}
 }

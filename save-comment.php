@@ -1,6 +1,7 @@
 <?php
+require_once __DIR__ . '/vendor/autoload.php';
 use Libraries\Controllers\Comment;
-require_once "libraries/Controllers/Comment.php";
+
 
 $controllerComment= new Comment();
 $controllerComment->save();
